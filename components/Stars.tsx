@@ -9,9 +9,9 @@ const Stars = ({ rating }: Props) => {
   console.log(progressBar);
 
   return (
-    <div className="relative inline-block before:content-['★★★★★'] before:text-2xl before:text-[#ccc]">
+    <div className="relative inline-block before:content-['★★★★★'] before:text-3xl before:text-[#ccc]">
       <div
-        className={`absolute top-0 left-0 whitespace-nowrap overflow-hidden before:text-2xl before:content-['★★★★★'] before:text-[#f8ce0b]`}
+        className={`absolute top-0 left-0 whitespace-nowrap overflow-hidden before:text-3xl before:content-['★★★★★'] before:text-[#f8ce0b]`}
         style={{
           width: progressBar,
         }}
