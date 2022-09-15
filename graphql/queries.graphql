@@ -1,0 +1,43 @@
+query GetAllPostsList {
+  posts(orderBy: createdAt_DESC) {
+    id
+    slug
+    title
+    date
+    excerpt
+    coverImage {
+      url
+    }
+    author {
+      id
+      name
+    }
+  }
+}
+
+query GetPostsSlugs {
+  posts {
+    slug
+  }
+}
+
+query GetPostBySlug($slug: String!) {
+  post(where: { slug: $slug }) {
+    id
+    slug
+    title
+    date
+    content {
+      markdown
+    }
+    coverImage {
+      url
+    }
+    author {
+      name
+      picture {
+        url
+      }
+    }
+  }
+}
