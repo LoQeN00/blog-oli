@@ -2814,6 +2814,7 @@ export type Post = Node & {
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
+  rating?: Maybe<Scalars['Float']>;
   scheduledIn: Array<ScheduledOperation>;
   /** Attach an SEO model to this post */
   seo?: Maybe<Seo>;
@@ -2910,6 +2911,7 @@ export type PostCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   date: Scalars['Date'];
   excerpt?: InputMaybe<Scalars['String']>;
+  rating?: InputMaybe<Scalars['Float']>;
   seo?: InputMaybe<SeoCreateOneInlineInput>;
   slug: Scalars['String'];
   tags?: InputMaybe<Array<Scalars['String']>>;
@@ -3037,6 +3039,21 @@ export type PostManyWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  rating?: InputMaybe<Scalars['Float']>;
+  /** All values greater than the given value. */
+  rating_gt?: InputMaybe<Scalars['Float']>;
+  /** All values greater than or equal the given value. */
+  rating_gte?: InputMaybe<Scalars['Float']>;
+  /** All values that are contained in given list. */
+  rating_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  /** All values less than the given value. */
+  rating_lt?: InputMaybe<Scalars['Float']>;
+  /** All values less than or equal the given value. */
+  rating_lte?: InputMaybe<Scalars['Float']>;
+  /** All values that are not equal to given value. */
+  rating_not?: InputMaybe<Scalars['Float']>;
+  /** All values that are not contained in given list. */
+  rating_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
@@ -3118,6 +3135,8 @@ export enum PostOrderByInput {
   IdDesc = 'id_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  RatingAsc = 'rating_ASC',
+  RatingDesc = 'rating_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   TagsAsc = 'tags_ASC',
@@ -3134,6 +3153,7 @@ export type PostUpdateInput = {
   coverImage?: InputMaybe<AssetUpdateOneInlineInput>;
   date?: InputMaybe<Scalars['Date']>;
   excerpt?: InputMaybe<Scalars['String']>;
+  rating?: InputMaybe<Scalars['Float']>;
   seo?: InputMaybe<SeoUpdateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
   tags?: InputMaybe<Array<Scalars['String']>>;
@@ -3161,6 +3181,7 @@ export type PostUpdateManyInput = {
   content?: InputMaybe<Scalars['RichTextAST']>;
   date?: InputMaybe<Scalars['Date']>;
   excerpt?: InputMaybe<Scalars['String']>;
+  rating?: InputMaybe<Scalars['Float']>;
   tags?: InputMaybe<Array<Scalars['String']>>;
   title?: InputMaybe<Scalars['String']>;
 };
@@ -3305,6 +3326,21 @@ export type PostWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  rating?: InputMaybe<Scalars['Float']>;
+  /** All values greater than the given value. */
+  rating_gt?: InputMaybe<Scalars['Float']>;
+  /** All values greater than or equal the given value. */
+  rating_gte?: InputMaybe<Scalars['Float']>;
+  /** All values that are contained in given list. */
+  rating_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  /** All values less than the given value. */
+  rating_lt?: InputMaybe<Scalars['Float']>;
+  /** All values less than or equal the given value. */
+  rating_lte?: InputMaybe<Scalars['Float']>;
+  /** All values that are not equal to given value. */
+  rating_not?: InputMaybe<Scalars['Float']>;
+  /** All values that are not contained in given list. */
+  rating_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
@@ -5841,7 +5877,7 @@ export type GetPostBySlugQueryVariables = Exact<{
 }>;
 
 
-export type GetPostBySlugQuery = { __typename?: 'Query', post?: { __typename?: 'Post', id: string, slug: string, title: string, date: any, content: { __typename?: 'RichText', markdown: string }, coverImage?: { __typename?: 'Asset', url: string } | null, author?: { __typename?: 'Author', name: string, picture?: { __typename?: 'Asset', url: string } | null } | null } | null };
+export type GetPostBySlugQuery = { __typename?: 'Query', post?: { __typename?: 'Post', id: string, slug: string, title: string, date: any, rating?: number | null, content: { __typename?: 'RichText', markdown: string }, coverImage?: { __typename?: 'Asset', url: string } | null, author?: { __typename?: 'Author', name: string, picture?: { __typename?: 'Asset', url: string } | null } | null } | null };
 
 
 export const GetAllPostsListDocument = gql`
@@ -5930,6 +5966,7 @@ export const GetPostBySlugDocument = gql`
     slug
     title
     date
+    rating
     content {
       markdown
     }

@@ -3,6 +3,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import Image from 'next/image';
 import { NextReactMarkdown } from './NextReactMarkdown';
 import Link from 'next/link';
+import Stars from './Stars';
 
 interface BlogPostItemDetails {
   id: string;
@@ -12,6 +13,7 @@ interface BlogPostItemDetails {
   author: string;
   content: MDXRemoteSerializeResult<Record<string, unknown>>;
   authorPicture: string;
+  rating: number;
 }
 
 type Props = {
@@ -56,6 +58,7 @@ const BlogPostDetails = ({ data }: Props) => {
         <article className="prose lg:prose-xl px-4">
           <NextReactMarkdown description={data.content} />
         </article>
+        <Stars rating={data.rating} />
       </div>
     </div>
   );

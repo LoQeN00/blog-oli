@@ -27,6 +27,7 @@ const PostDetail = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =>
           id: data?.id!,
           title: data?.title!,
           authorPicture: data?.author?.picture?.url!,
+          rating: data?.rating!,
         }}
       />
     </div>

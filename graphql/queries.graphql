@@ -27,6 +27,7 @@ query GetPostBySlug($slug: String!) {
     slug
     title
     date
+    rating
     content {
       markdown
     }

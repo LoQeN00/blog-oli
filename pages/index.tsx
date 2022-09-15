@@ -3,12 +3,7 @@ import BlogPostsList from '../components/BlogPostsList';
 import Header from '../components/Header';
 import { InferGetStaticPropsType } from 'next';
 import { apolloClient } from '../graphql/apolloClient';
-import {
-  GetAllPostsListDocument,
-  GetAllPostsListQuery,
-  GetAllPostsListQueryVariables,
-  Post,
-} from '../generated/graphql';
+import { GetAllPostsListDocument, GetAllPostsListQuery, GetAllPostsListQueryVariables } from '../generated/graphql';
 
 const HomePage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
