@@ -1,0 +1,9 @@
+mutation CreateAccount($email: String!, $password: String!) {
+  createAccount(data: { email: $email, password: $password }) {
+    id
+  }
+
+  publishAccount(to: PUBLISHED, where: { email: $email }) {
+    id
+  }
+}

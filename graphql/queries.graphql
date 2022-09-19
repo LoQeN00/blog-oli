@@ -42,3 +42,11 @@ query GetPostBySlug($slug: String!) {
     }
   }
 }
+
+query FindAccountByEmail($email: String) {
+  account(where: { email: $email }) {
+    id
+    email
+    password
+  }
+}

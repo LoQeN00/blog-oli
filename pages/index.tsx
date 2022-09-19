@@ -5,14 +5,23 @@ import { InferGetStaticPropsType } from 'next';
 import { apolloClient } from '../graphql/apolloClient';
 import { GetAllPostsListDocument, GetAllPostsListQuery, GetAllPostsListQueryVariables } from '../generated/graphql';
 import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import { useSession } from 'next-auth/react';
 
 const HomePage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { data: session } = useSession();
+
+  console.log(session);
+
   return (
-    <div className="max-w-7xl mx-auto flex justify-center flex-col">
-      <Header />
-      <BlogPostsList posts={data.posts} />
-      <Footer />
-    </div>
+    <>
+      <Navbar />
+      <div className="max-w-7xl mx-auto flex justify-center flex-col">
+        <Header />
+        <BlogPostsList posts={data.posts} />
+        <Footer />
+      </div>
+    </>
   );
 };
 
