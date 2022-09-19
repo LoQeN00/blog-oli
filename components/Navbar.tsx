@@ -9,7 +9,7 @@ const Navbar = (props: Props) => {
 
   return (
     <nav className="p-4 shadow-[0_15px_100px_-2px_rgba(0,0,0,0.3)] mt-4 rounded-lg">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="max-w-7xl mx-auto flex justify-between items-center flex-col sm:flex-row space-y-4 sm:space-y-0">
         <div className="flex justify-center items-center space-x-4">
           <Link href="/">
             <a className="text-2xl">HOME</a>
